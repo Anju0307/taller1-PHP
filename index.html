@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller php</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <section class="seccion">
+        <h2>Este programa muestra el signo zodiacal de una persona. Para ello el usuario debe introducir únicamente el
+            día y el mes de nacimiento y el programa determinará inmediatamente el signo zodiacal de la persona.</h2>
+        <form class="form" id="form" method="post" action="api.php">
+            <label class="titulo">Descubre tu signo zodiacal</label>
+            <div>
+                <label>Ingresa tu mes de nacimiento</label>
+                <select id="mes" class="mes" name="mes" required>
+                    <option value="" disabled></option>
+                    <option value="enero">Enero</option>
+                    <option value="febrero">Febrero</option>
+                    <option value="marzo">Marzo</option>
+                    <option value="abril">Abril</option>
+                    <option value="mayo">Mayo</option>
+                    <option value="junio">Junio</option>
+                    <option value="julio">Julio</option>
+                    <option value="agosto">Agosto</option>
+                    <option value="septiembre">Septiembre</option>
+                    <option value="octubre">Octubre</option>
+                    <option value="noviembre">Noviembre</option>
+                    <option value="diciembre">Diciembre</option>
+                </select>
+            </div>
+            <div>
+                <label>Ingresa tu dia de nacimiento</label>
+                <input type="number" id="dia" class="dia" name="dia" pattern="[0-9]+" required>
+            </div>
+            <div>
+                <input type="submit" class="dia">
+            </div> 
+            <div>Tu signo zodiacal es: <p id="res"></p>
+            </div>
+        </form>
+        
+    </section>
+</body>
+
+</html>
