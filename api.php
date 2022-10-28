@@ -13,105 +13,23 @@
         }
 
         public function obtener() :string{
-            switch($this->mes){
 
-                case "enero":
-                    if($this->dia>0 && $this->dia<=20){
-                        return "Capricornio";
-                    } else if ($this->dia>20 && $this->dia<32){
-                        return "Acuario";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "febrero":
-                    if($this->dia>0 && $this->dia<=19){
-                        return "Acuario";
-                    } else if ($this->dia>19 && $this->dia<=29){
-                        return "Piscis";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "marzo":
-                    if($this->dia>0 && $this->dia<=20){
-                        return "Piscis";
-                    } else if ($this->dia>20 && $this->dia<=31){
-                        return "Aries";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "abril":
-                    if($this->dia>0 && $this->dia<=19){
-                        return "Aries";
-                    } else if ($this->dia>19 && $this->dia<=30){
-                        return "Tauro";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "mayo":
-                    if($this->dia>0 && $this->dia<=20){
-                        return "Tauro";
-                    } else if ($this->dia>20 && $this->dia<=31){
-                        return "Geminis";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "junio":
-                    if($this->dia>0 && $this->dia<=21){
-                        return "Geminis";
-                    } else if ($this->dia>21 && $this->dia<=30){
-                        return "Cancer";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "julio":
-                    if($this->dia>0 && $this->dia<=22){
-                        return "Cancer";
-                    } else if ($this->dia>22 && $this->dia<=31){
-                        return "Leo";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "agosto":
-                    if($this->dia>0 && $this->dia<=22){
-                        return "Leo";
-                    } else if ($this->dia>22 && $this->dia<=31){
-                        return "Virgo";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "septiembre":
-                    if($this->dia>0 && $this->dia<=22){
-                        return "Virgo";
-                    } else if ($this->dia>22 && $this->dia<=30){
-                        return "Libra";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "octubre":
-                    if($this->dia>0 && $this->dia<=22){
-                        return "Libra";
-                    } else if ($this->dia>22 && $this->dia<=30){
-                        return "Escorpio";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "noviembre":
-                    if($this->dia>0 && $this->dia<=21){
-                        return "Escorpio";
-                    } else if ($this->dia>21 && $this->dia<=30){
-                        return "Sagitario";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-                case "diciembre":
-                    if($this->dia>0 && $this->dia<=21){
-                        return "Sagitario";
-                    } else if ($this->dia>21 && $this->dia<=30){
-                        return "Capricornio";
-                    } else {
-                        return "Coloque un dia valido";
-                    }
-            }
+            $res = match($this->mes){
+                "enero" => fn($dia) => ($dia>0 && $dia<=20) ? "Capricornio" : (($dia>20 && $dia<=31) ?  "Acuario" : "Coloque un dia valido"),
+                "febrero" => fn($dia) => ($dia>0 && $dia<=19) ? "Acuario" : (($dia>19 && $dia<=29) ?  "Piscis" : "Coloque un dia valido"),
+                "marzo" => fn($dia) => ($dia>0 && $dia<=20) ? "Piscis" : (($dia>20 && $dia<=31) ?  "Aries" : "Coloque un dia valido"),
+                "abril" => fn($dia) => ($dia>0 && $dia<=19) ? "Aries" : (($dia>19 && $dia<=30) ?  "Tauro" : "Coloque un dia valido"),
+                "mayo" => fn($dia) => ($dia>0 && $dia<=20) ? "Tauro" : (($dia>20 && $dia<=31) ?  "Geminis" : "Coloque un dia valido"),
+                "junio" => fn($dia) => ($dia>0 && $dia<=21) ? "Geminis" : (($dia>19 && $dia<=30) ?  "Cancer" : "Coloque un dia valido"),
+                "julio" => fn($dia) => ($dia>0 && $dia<=22) ? "Cancer" : (($dia>19 && $dia<=31) ?  "Leo" : "Coloque un dia valido"),
+                "agosto" => fn($dia) => ($dia>0 && $dia<=22) ? "Leo" : (($dia>19 && $dia<=31) ?  "Virgo" : "Coloque un dia valido"),
+                "septiembre" => fn($dia) => ($dia>0 && $dia<=22) ? "Virgo" : (($dia>19 && $dia<=30) ?  "Libra" : "Coloque un dia valido"),
+                "octubre" => fn($dia) => ($dia>0 && $dia<=22) ? "Libra" : (($dia>19 && $dia<=30) ?  "Escorpio" : "Coloque un dia valido"),
+                "noviembre" => fn($dia) => ($dia>0 && $dia<=21) ? "Escorpio" : (($dia>19 && $dia<=30) ?  "Sagitario" : "Coloque un dia valido"),
+                "diciembre" => fn($dia) => ($dia>0 && $dia<=21) ? "Sagitario" : (($dia>19 && $dia<=31) ?  "Capricornio" : "Coloque un dia valido"),
+                default => "Coloque un mes valido"
+            };
+            return $res($this->dia);
         }
     }
     $obj = new zodiaco(mes:$_DATA['mes'],dia:$_DATA['dia']);
