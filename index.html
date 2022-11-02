@@ -12,28 +12,39 @@
 
 <body>
     <section class="seccion">
-        <h2>De la galería de productos, el usuario introducirá el código y el número de unidades del producto que
-            desea comprar. El programa determinará el total a pagar, como una factura. Ejemplo de factura. </h2>
-        <div class="conPro">
-            <h3>Codigos</h3>
-            <h4>1.Camisas = $30</h4>
-            <h4>2.Pantalones = $40</h4>
-            <h4>3.Medias = $100</h4>
-        </div>   
+        <h2>Escribir un programa que permita ingresar para los N alumnos de una universidad: SEXO (‘M’ o ‘F’), edad y
+            carrera (‘A’,’B’,’C’). Imprimir la carrera con menor promedio de edad de sus alumnos que son varones</h2>
         <form class="form" id="form" method="post" action="api.php">
-            <label class="titulo">Pago producto</label>
+            <label class="titulo">Promedio universidad</label>
             <div>
-                <label>Ingresa el codigo del producto</label>
-                <input type="number" id="codigo" class="codigo" name="codigo" pattern="[0-9]+" required>
+                <label>Ingresa la cantidad de estudiantes</label>
+                <input type="number" id="cantidad" class="cantidad" name="cantidad" pattern="[0-9]+" required disabled >
             </div>
             <div>
-                <label>Ingresa la cantidad de productos</label>
-                <input type="number" id="dia" class="dia" name="cantidad" pattern="[0-9]+" required>
+                <label>Ingrese el genero del estudiante</label>
+                <select name="genero" id="genero" required disabled>
+                    <option value=""></option>
+                    <option value="femenino" >Femenino</option>
+                    <option value="masculino">Masculino</option>
+                </select>
+            </div>
+            <div>
+                <label>Ingresa la edad del estudiante</label>
+                <input type="number" id="edad" class="edad" name="edad" pattern="[0-9]+" required disabled>
+            </div>
+            <div>
+                <label>Ingrese la carrera del estudiante</label>
+                <select name="carrera" id="carrera" required disabled>
+                    <option value="" disabled selected></option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                </select>
             </div>
             <div>
                 <input type="submit" class="dia">
             </div>
-            <div>El total a pagar es de: <p id="res"></p>
+            <div>La carrera con estudiantes de menor edad y varones es: <p id="res"></p>
             </div>
         </form>
 
